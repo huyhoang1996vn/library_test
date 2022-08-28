@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import CreateAPIView
+from django.db.models import F
 
 from .models import *
 from .serializers import *
@@ -76,6 +77,7 @@ def return_book(request):
             track.return_date = datetime.today().date()
             track.is_return = True
             track.save()
+            Title.objects.filter(book__id=book_id).update(number_available=F('number_available')+1)
             return Response({"code": 200, "message": _("success")})
     except Exception as e:
         print("e", e)

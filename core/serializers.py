@@ -3,6 +3,7 @@ from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from .models import *
 from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
+from django.db.models import F
 
 
 class TitleSerializer(ModelSerializer):
@@ -52,3 +53,8 @@ class BookTrackingSerializer(ModelSerializer):
     class Meta:
         model = BookTracking
         fields = "__all__"
+
+    def create(self, validated_data):
+        book = validated_data['book']
+        Title.objects.filter(book=book).update(number_available=F('number_available')-1)
+        return super(BookTrackingSerializer, self).create(validated_data)
