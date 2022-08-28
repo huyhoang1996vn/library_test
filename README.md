@@ -41,4 +41,12 @@ Open data.sql
 python manage.py runserver 0:8000
 ```
 
+### User project
+
+SuperUser: steve/123456
+student/steve@123
+librarian/steve@123
+
+Create user on django admin
+
 ### Please ignore Docker, docker compose, zappa 
