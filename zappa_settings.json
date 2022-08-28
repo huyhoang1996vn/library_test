@@ -1,0 +1,11 @@
+{
+    "dev": {
+        "django_settings": "config.serverless",
+        "profile_name": "incloud-test",
+        "project_name": "django3",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-5ntulw84i",
+        "certificate_arn": "",
+        "domain": "stevedev.cf"
+    }
+}
