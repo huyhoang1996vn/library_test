@@ -11,4 +11,4 @@ COPY . $WORKSPACE
 
 CMD python ./manage.py collectstatic
 
-CMD uvicorn helio.asgi:application --host 0.0.0.0 --port 8011 --log-config log.ini
+CMD uvicorn main.asgi:application --host 0.0.0.0 --port 8011 --log-config log.ini
